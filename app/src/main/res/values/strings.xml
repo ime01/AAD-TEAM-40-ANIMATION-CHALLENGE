@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">KidsPlayGround</string>
+    <string name="aad_team_40_or">Or</string>
+    <string name="aad_team_40_text">#AAD-TEAM-40</string>
+    <string name="aad_team_40_text2">#ALC 4.0</string>
+    <string name="aad_team_40_title">KIDS PLAYGROUND</string>
+    <string name="learn_txt">Play</string>
+    <string name="quiz_text">Quiz</string>
 </resources>
