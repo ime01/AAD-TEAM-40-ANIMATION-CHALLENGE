@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillAfter="true"
+    android:interpolator="@android:anim/linear_interpolator">
+
+    <translate
+        android:duration="800"
+        android:fillAfter="true"
+        android:fromXDelta="0%p"
+        android:fromYDelta="70%p"
+        android:startOffset="300" />
+
+    <!--    <translate-->
+    <!--        android:duration="800"-->
+    <!--        android:interpolator="@android:anim/bounce_interpolator"-->
+    <!--        android:fillAfter="true"-->
+    <!--        android:fromXDelta="0%p"-->
+    <!--        android:startOffset="1100"-->
+    <!--        android:fromYDelta="70%p"/>-->
+    <translate
+        android:duration="800"
+        android:fillAfter="true"
+        android:fromXDelta="0%p"
+        android:fromYDelta="-70%p"
+        android:startOffset="1900" />
+    <translate
+        android:duration="100"
+        android:fillAfter="true"
+        android:fromXDelta="0%p"
+        android:fromYDelta="-70%p"
+        android:startOffset="2700" />
+    <rotate
+        android:duration="1000"
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:repeatCount="1"
+        android:startOffset="3800"
+        android:toDegrees="360" />
+</set>

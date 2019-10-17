@@ -4,8 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/aad_bg_image"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/aad_bg_image" />
 
     <TextView
         android:id="@+id/aad_team_3"
@@ -35,33 +47,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/aad_team_or"
-        android:layout_width="wrap_content"
-        android:layout_height="0sp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/aad_team_40_or"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/colorAccent3"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_quiz"
-        app:layout_constraintEnd_toStartOf="@id/btn_quiz"
-        app:layout_constraintStart_toEndOf="@id/btn_lesson" />
-
     <Button
         android:id="@+id/btn_lesson"
-        android:layout_width="0sp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="playActivity"
         android:background="@drawable/quiz_rounded_button"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/learn_txt"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent3"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_quiz"
-        app:layout_constraintEnd_toStartOf="@+id/aad_team_or"
+        app:layout_constraintBottom_toTopOf="@+id/aad_team_2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_quiz"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -69,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8sp"
-        android:layout_marginTop="16sp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8sp"
         android:fontFamily="sans-serif-black"
         android:text="@string/aad_team_40_title"
@@ -82,19 +83,19 @@
 
     <Button
         android:id="@+id/btn_quiz"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/play_rounded_button"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/quiz_text"
+        android:onClick="quizActivity"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent3"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/aad_team_3"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_lesson"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/aad_team_or" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_lesson"
+        app:layout_constraintTop_toTopOf="@+id/btn_lesson" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
