@@ -24,7 +24,7 @@
         android:fromYDelta="-70%p"
         android:startOffset="1900" />
     <translate
-        android:duration="100"
+        android:duration="400"
         android:fillAfter="true"
         android:fromXDelta="0%p"
         android:fromYDelta="-70%p"
