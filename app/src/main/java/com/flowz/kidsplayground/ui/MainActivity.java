@@ -1,8 +1,10 @@
-package com.flowz.kidsplayground;
+package com.flowz.kidsplayground.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.flowz.kidsplayground.R;
 
 public class MainActivity extends AppCompatActivity {
 
