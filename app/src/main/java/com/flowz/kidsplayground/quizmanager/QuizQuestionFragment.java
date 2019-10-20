@@ -1,20 +1,20 @@
-package com.flowz.kidsplayground.quizfragments;
+package com.flowz.kidsplayground.quizmanager;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.flowz.kidsplayground.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +29,9 @@ public class QuizQuestionFragment extends Fragment {
     private static final String ARG_CURRENT_SCORE = "currentScore";
 
     private int mScore;
+    private static final String ARG_QUESTION = "question";
+
+    private QuizQuestionInfo mQuestion;
 
     private OnFragmentInteractionListener mListener;
 
@@ -40,14 +43,14 @@ public class QuizQuestionFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param score Parameter 1.
+     * @param question Parameter 1.
      * @return A new instance of fragment QuizQuestionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static QuizQuestionFragment newInstance(int score) {
+    public static QuizQuestionFragment newInstance(QuizQuestionInfo question) {
         QuizQuestionFragment fragment = new QuizQuestionFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_CURRENT_SCORE, score);
+        args.putParcelable(ARG_QUESTION, question);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,7 +59,8 @@ public class QuizQuestionFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mScore = getArguments().getInt(ARG_CURRENT_SCORE);
+            mQuestion = getArguments().getParcelable(ARG_QUESTION);
+
 
         }
 
@@ -67,16 +71,18 @@ public class QuizQuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ViewGroup view =(ViewGroup) inflater.inflate(R.layout.fragment_quiz_question_one, container, false);
-        ListView optionsView = view.findViewById(R.id.quiz_one_options);
-        ArrayList<QuizOptionModel> quizOptionModels = new ArrayList<>();
-        quizOptionModels.add(new QuizOptionModel("Book", 1));
-        quizOptionModels.add(new QuizOptionModel("Ladder", 2));
-        quizOptionModels.add(new QuizOptionModel("Tree", 3));
-        quizOptionModels.add(new QuizOptionModel("Road", 4));
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_quiz_question, container, false);
+        List<QuizOptionInfo> quizOptions = mQuestion.getQuizOptionInfos();
 
-        QuizFragmentAdapter quizFragmentAdapter = new QuizFragmentAdapter(quizOptionModels, this.getContext(), 2);
-        optionsView.setAdapter(quizFragmentAdapter);
+        ImageView quizImage = view.findViewById(R.id.quiz_image);
+        ListView optionsView = view.findViewById(R.id.quiz_options);
+        TextView questionTextView = view.findViewById(R.id.quiz_question);
+
+        quizImage.setImageResource(mQuestion.getImageResource());
+        questionTextView.setText(mQuestion.getQuestion());
+
+        QuizOptionsListAdapter quizOptionsListAdapter = new QuizOptionsListAdapter(quizOptions, this.getContext(), mQuestion.getAnswer());
+        optionsView.setAdapter(quizOptionsListAdapter);
 
         return view;
     }

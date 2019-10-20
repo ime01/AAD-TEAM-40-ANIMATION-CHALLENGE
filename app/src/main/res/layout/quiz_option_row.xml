@@ -9,12 +9,18 @@
     android:paddingRight="4dp"
     android:paddingBottom="4dp">
 
-    <TextView
-        android:id="@+id/text_option"
+    <RadioButton
+        android:id="@+id/option_radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/aad_team_40_text"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp" />
+        android:text="@string/options" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/text_option"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/aad_team_40_text"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+<!--        android:textSize="24sp" />-->
 </LinearLayout>

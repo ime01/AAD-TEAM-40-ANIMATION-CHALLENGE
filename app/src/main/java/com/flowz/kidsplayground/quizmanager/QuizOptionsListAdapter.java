@@ -1,27 +1,30 @@
-package com.flowz.kidsplayground.quizfragments;
+package com.flowz.kidsplayground.quizmanager;
 
 import android.content.Context;
 import android.database.DataSetObserver;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import android.widget.TextView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.flowz.kidsplayground.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class QuizFragmentAdapter implements ListAdapter {
-    ArrayList<QuizOptionModel> quizOptionArrayList;
-    Context mContext;
-    int mAnswerId;
+public class QuizOptionsListAdapter implements ListAdapter {
+    private List<QuizOptionInfo> quizOptionArrayList;
+    private Context mContext;
+    private int mAnswerId;
+    private boolean answered;
+    private RadioGroup optionsGroup;
 
-    public QuizFragmentAdapter(ArrayList<QuizOptionModel> quizOptionArrayList, Context context, int answerId) {
+    public QuizOptionsListAdapter(List<QuizOptionInfo> quizOptionArrayList, Context context, int answerId) {
         this.quizOptionArrayList = quizOptionArrayList;
         mContext = context;
         mAnswerId = answerId;
+        optionsGroup = new RadioGroup(mContext);
     }
 
     @Override
@@ -66,24 +69,27 @@ public class QuizFragmentAdapter implements ListAdapter {
 
     @Override
     public View getView(final int position, View view, final ViewGroup viewGroup) {
-        QuizOptionModel quizOptionModel = quizOptionArrayList.get(position);
+        QuizOptionInfo quizOptionInfo = quizOptionArrayList.get(position);
         if (view == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             view = layoutInflater.inflate(R.layout.quiz_option_row, null);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (position + 1 == mAnswerId) {
-                        v.setBackgroundColor(Color.parseColor("#ADD8E6"));
-                    } else {
-                        v.setBackgroundColor(Color.parseColor("#FF0000"));
-                    }
-
+//                    if (!answered) {
+//                        if (position + 1 == mAnswerId) {
+//                            v.setBackgroundColor(Color.parseColor("#ADD8E6"));
+//                        } else {
+//                            v.setBackgroundColor(Color.parseColor("#FF0000"));
+//                        }
+//                        answered = true;
+//                    }
                 }
             });
-            TextView tittle = view.findViewById(R.id.text_option);
-            tittle.setText(quizOptionModel.getOption());
+            RadioButton option = view.findViewById(R.id.option_radio);
+            option.setText(quizOptionInfo.getOption());
         }
+        optionsGroup.addView(view, position);
         return view;
     }
 

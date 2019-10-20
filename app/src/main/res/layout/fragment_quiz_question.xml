@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/quiz_two_image"
+        android:id="@+id/quiz_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -16,28 +16,21 @@
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:contentDescription="@string/quiz_image"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ladder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scaleType="fitCenter" />
 
     <TextView
-        android:id="@+id/quiz_one_question"
+        android:id="@+id/quiz_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="6dp"
-        android:text="@string/identify_the_above_image"
+        android:text="@string/setContentDescription"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_two_image" />
+        android:textSize="24sp" />
 
     <ListView
-        android:id="@+id/quiz_one_options"
+        android:id="@+id/quiz_options"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -51,16 +44,10 @@
         android:elevation="@dimen/cardview_default_elevation"
         android:focusable="true"
         android:footerDividersEnabled="true"
-        android:theme="@style/Base.CardView"
-        app:layout_constraintBottom_toTopOf="@+id/quiz_one_next_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz_one_question">
-
-    </ListView>
+        android:theme="@style/Base.CardView" />
 
     <Button
-        android:id="@+id/quiz_one_next_button"
+        android:id="@+id/quiz_next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
@@ -69,8 +56,6 @@
         android:drawableEnd="@android:drawable/ic_media_next"
         android:onClick="onNextPressed"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         tools:text="@string/next" />
 
 </LinearLayout>

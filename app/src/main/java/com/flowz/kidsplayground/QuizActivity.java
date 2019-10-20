@@ -6,7 +6,7 @@ import android.view.View;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.flowz.kidsplayground.quizfragments.ViewPagerAdapter;
+import com.flowz.kidsplayground.quizmanager.ViewPagerAdapter;
 
 public class QuizActivity extends FragmentActivity {
 
@@ -30,10 +30,13 @@ public class QuizActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         if (mViewPager.getCurrentItem() > 0) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
+        if (mViewPager.getCurrentItem() == 0) {
+            super.onBackPressed();
+        }
+
 
     }
 
@@ -48,5 +51,9 @@ public class QuizActivity extends FragmentActivity {
         if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getChildCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
         }
+    }
+
+    public void onListClick(View view){
+
     }
 }
