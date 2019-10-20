@@ -1,24 +1,25 @@
 package com.flowz.kidsplayground;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
-public class QuizActivity extends AppCompatActivity {
+import androidx.fragment.app.FragmentActivity;
+import androidx.viewpager.widget.ViewPager;
 
-    Button Next;
+import com.flowz.kidsplayground.quizfragments.ViewPagerAdapter;
+
+public class QuizActivity extends FragmentActivity {
+
+    private ViewPager mViewPager;
+    private int totalScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        Next = (Button)findViewById(R.id.next);
-
-        openPreviousFragment(Next);
+        mViewPager = findViewById(R.id.view_pager);
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
     }
 
     @Override
@@ -27,20 +28,25 @@ public class QuizActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    public void openNewFragment(View view) {
-        BFragment fragment = new BFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_container, fragment, getString(R.string.b));
-        transaction.commit();
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (mViewPager.getCurrentItem() > 0) {
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+        }
 
     }
 
-    public void openPreviousFragment(View view) {
-        AFragment fragment = new AFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_container, fragment, getString(R.string.b));
-        transaction.commit();
 
+    public void onPreviousPressed(View view) {
+        if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getChildCount())) {
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
+        }
     }
 
+    public void onNextPressed(View view) {
+        if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getChildCount())) {
+            mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
+        }
+    }
 }
