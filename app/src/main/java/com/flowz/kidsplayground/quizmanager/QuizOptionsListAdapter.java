@@ -5,26 +5,26 @@ import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
+import android.widget.BaseAdapter;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import com.flowz.kidsplayground.R;
 
 import java.util.List;
 
-public class QuizOptionsListAdapter implements ListAdapter {
+public class QuizOptionsListAdapter extends BaseAdapter {
     private List<QuizOptionInfo> quizOptionArrayList;
     private Context mContext;
     private int mAnswerId;
     private boolean answered;
-    private RadioGroup optionsGroup;
+    private int selectedPosition = -1;
+    private RadioButton mSelectedOption;
 
     public QuizOptionsListAdapter(List<QuizOptionInfo> quizOptionArrayList, Context context, int answerId) {
         this.quizOptionArrayList = quizOptionArrayList;
         mContext = context;
         mAnswerId = answerId;
-        optionsGroup = new RadioGroup(mContext);
+
     }
 
     @Override
@@ -73,23 +73,27 @@ public class QuizOptionsListAdapter implements ListAdapter {
         if (view == null) {
             LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             view = layoutInflater.inflate(R.layout.quiz_option_row, null);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    if (!answered) {
-//                        if (position + 1 == mAnswerId) {
-//                            v.setBackgroundColor(Color.parseColor("#ADD8E6"));
-//                        } else {
-//                            v.setBackgroundColor(Color.parseColor("#FF0000"));
-//                        }
-//                        answered = true;
-//                    }
-                }
-            });
             RadioButton option = view.findViewById(R.id.option_radio);
             option.setText(quizOptionInfo.getOption());
+            option.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(position != selectedPosition && mSelectedOption !=null){
+                        mSelectedOption.setChecked(false);
+                    }
+                    selectedPosition = position;
+                    mSelectedOption = ((RadioButton) view);
+                }
+            });
+            if(selectedPosition != position){
+                option.setChecked(false);
+            }else {
+                option.setChecked(true);
+                if(mSelectedOption !=null && option != mSelectedOption){
+                    mSelectedOption = option;
+                }
+            }
         }
-        optionsGroup.addView(view, position);
         return view;
     }
 

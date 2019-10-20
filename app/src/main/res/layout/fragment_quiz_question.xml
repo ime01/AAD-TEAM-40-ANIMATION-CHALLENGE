@@ -37,6 +37,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginEnd="8dp"
         android:layout_weight="1.5"
+        android:choiceMode="singleChoice"
         android:clickable="true"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -52,10 +53,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginEnd="8dp"
-        android:contentDescription="@string/next"
-        android:drawableEnd="@android:drawable/ic_media_next"
         android:onClick="onNextPressed"
+        android:text="@string/next"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorAccent2"
         tools:text="@string/next" />
 
 </LinearLayout>

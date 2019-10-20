@@ -20,6 +20,7 @@ public class QuizActivity extends FragmentActivity {
 
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
     }
 
     @Override
@@ -33,7 +34,7 @@ public class QuizActivity extends FragmentActivity {
         if (mViewPager.getCurrentItem() > 0) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
-        if (mViewPager.getCurrentItem() == 0) {
+        if (mViewPager.getCurrentItem() < 0) {
             super.onBackPressed();
         }
 
