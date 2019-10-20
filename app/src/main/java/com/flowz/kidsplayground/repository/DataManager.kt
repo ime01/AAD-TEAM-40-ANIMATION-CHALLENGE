@@ -19,7 +19,6 @@ object DataManager {
            val letters =AlphabetData(letter)
             alphabet.add(letters)
             ++c
-
         }
     }
 

@@ -12,12 +12,14 @@
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
-        app:contentPadding="16dp">
+        app:contentPadding="16dp"
+        android:id="@+id/screenRoot">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
 
             <TextView
@@ -30,6 +32,7 @@
                 android:text="A"
                 android:textAppearance="@style/Base.Animation.AppCompat.Tooltip"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
