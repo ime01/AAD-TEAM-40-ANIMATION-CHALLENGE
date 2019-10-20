@@ -8,7 +8,7 @@ This is a simple app called KIDS PLAYGROUND
 This app utilizes animations in various ways to create a fun and interactive way to teach little Nursery kids the letters of the alphabet
 
 
-Also contains a little qestion and answer segment to test the kids on their understnding
+It also contains a little question and answer segment to test the kids on their understanding of the alphabets
 
 
 This app was built as a project for team aad 40 on the google, pluralsight and andela scholarship.
