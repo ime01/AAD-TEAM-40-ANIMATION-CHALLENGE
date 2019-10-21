@@ -46,7 +46,7 @@ public class QuizActivity extends FragmentActivity {
         if (mViewPager.getCurrentItem() > 0) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
-        if (mViewPager.getCurrentItem() < 0) {
+        if (mViewPager.getCurrentItem() == 0) {
             super.onBackPressed();
         }
 
@@ -55,13 +55,13 @@ public class QuizActivity extends FragmentActivity {
 
 
     public void onPreviousPressed(View view) {
-        if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getChildCount())) {
+        if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getAdapter().getCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
     }
 
     public void onNextPressed(View view) {
-        if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getChildCount())) {
+        if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getAdapter().getCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
         }
     }
