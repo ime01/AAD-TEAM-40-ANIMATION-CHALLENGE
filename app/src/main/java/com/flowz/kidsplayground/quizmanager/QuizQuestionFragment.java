@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,6 +36,9 @@ public class QuizQuestionFragment extends Fragment {
     private QuizQuestionInfo mQuestion;
 
     private OnFragmentInteractionListener mListener;
+
+    public Animation animPlay;
+    public Animation animPlay2;
 
     public QuizQuestionFragment() {
         // Required empty public constructor
@@ -83,6 +88,13 @@ public class QuizQuestionFragment extends Fragment {
 
         QuizOptionsListAdapter quizOptionsListAdapter = new QuizOptionsListAdapter(quizOptions, this.getContext(), mQuestion.getAnswer());
         optionsView.setAdapter(quizOptionsListAdapter);
+
+        animPlay = AnimationUtils.loadAnimation(getContext(), R.anim.question_picture_animation);
+        animPlay2 = AnimationUtils.loadAnimation(getContext(), R.anim.quiz_buttuon_animation);
+
+        questionTextView.startAnimation(animPlay2);
+
+        quizImage.startAnimation(animPlay);
 
         return view;
     }
