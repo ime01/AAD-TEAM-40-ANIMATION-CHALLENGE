@@ -138,7 +138,7 @@ public class QuizQuestionsManager {
     }
 
 
-    private QuizQuestionInfo createQuestions(String question, int imageResource, String options1, String options2, String options3, String options4, int answerId) {
+    private QuizQuestionInfo createQuestions(String question, int imageResource, String options1, String options2, String options3, String options4,int answerId) {
         List<QuizOptionInfo> options = new ArrayList<>();
         options.add(new QuizOptionInfo(options1, 1));
         options.add(new QuizOptionInfo(options2, 2));

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.flowz.kidsplayground.quizmanager.QuizOptionInfo;
+import com.flowz.kidsplayground.quizmanager.QuizOptionsListAdapter;
 import com.flowz.kidsplayground.quizmanager.ViewPagerAdapter;
 
 public class QuizActivity extends FragmentActivity {
