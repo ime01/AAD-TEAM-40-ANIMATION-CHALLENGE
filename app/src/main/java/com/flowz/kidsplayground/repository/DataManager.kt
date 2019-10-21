@@ -13,8 +13,9 @@ object DataManager {
     private fun alphabeticalLetter() {
         var letter:String
         var c = 'A'
+        var d='a'
         while (c <= 'Z') {
-            letter = c.toString()
+            letter = "$c $d"
             Log.e("letters",letter)
            val letters =AlphabetData(letter)
             alphabet.add(letters)

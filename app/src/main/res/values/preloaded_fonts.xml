@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/baloo_bhai</item>
         <item>@font/berkshire_swash</item>
         <item>@font/poller_one</item>
         <item>@font/titan_one</item>
