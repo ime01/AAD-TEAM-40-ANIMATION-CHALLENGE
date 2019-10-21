@@ -13,7 +13,10 @@
         android:id="@+id/option_radio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/options" />
+        android:text="@string/options"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/text_option"-->

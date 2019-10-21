@@ -2,6 +2,10 @@ package com.flowz.kidsplayground;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -13,6 +17,9 @@ public class QuizActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private int totalScore = 0;
 
+    public Animation animPlay;
+    public Button questionText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +27,12 @@ public class QuizActivity extends FragmentActivity {
 
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+
+//        questionText  = (Button) findViewById(R.id.quiz_next_button);
+//
+//        animPlay = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.play_animation);
+//
+//        questionText.startAnimation(animPlay);
 
     }
 
