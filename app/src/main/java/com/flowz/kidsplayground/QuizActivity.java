@@ -44,7 +44,7 @@ public class QuizActivity extends FragmentActivity {
         if (mViewPager.getCurrentItem() > 0) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
-        if (mViewPager.getCurrentItem() < 0) {
+        if (mViewPager.getCurrentItem() == 0) {
             super.onBackPressed();
         }
 
