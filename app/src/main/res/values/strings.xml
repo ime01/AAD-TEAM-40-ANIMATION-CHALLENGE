@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">KidsPlayGround</string>
+    <string name="aad_team_40_or">Or</string>
+    <string name="aad_team_40_text">#AAD-TEAM-40</string>
+    <string name="aad_team_40_text2">#ALC 4.0</string>
+    <string name="aad_team_40_title">KIDS PLAYGROUND</string>
+    <string name="learn_txt">Play</string>
+    <string name="quiz_text">Quiz</string>
+    <string name="choose_alphabet"> Match this picture to the corresponding alphabet</string>
+    <string name="z">Z</string>
+    <string name="g">G</string>
+    <string name="a">A</string>
+    <string name="c">C</string>
+    <string name="setContentDescription">picure of object representing the alphabet</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="b">B</string>
+    <string name="quiz_image">Quiz Image</string>
+    <string name="next">Next</string>
+    <string name="prev">Previous</string>
+    <string name="options">options</string>
+    <string name="score_from_20and_above">HURRAY! YOU SCORED</string>
+    <string name="score_below_10">NOT GOOD! YOU SCORED</string>
+    <string name="score_from_10_to_15">GOOD! YOU SCORED</string>
+    <string name="score_from_15_to_20">GREAT! YOU SCORED</string>
+
+    <string name="A">YOU ARE SUCH A SMART KID!</string>
+    <string name="C">WE KNOW YOU CAN DO BETTER</string>
+    <string name="D">NOT SO GREAT</string>
+    <string name="B">YOUR ARE ALMOST THERE</string>
+    <string name="play_again">PLAY AGAIN</string>
+    <string name="exit_app">EXIT APP</string>
+    <string name="submit">SUBMIT</string>
 </resources>
