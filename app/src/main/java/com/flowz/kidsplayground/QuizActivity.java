@@ -3,18 +3,20 @@ package com.flowz.kidsplayground;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.flowz.kidsplayground.quizmanager.QuizOptionInfo;
 import com.flowz.kidsplayground.quizmanager.QuizOptionsListAdapter;
+import com.flowz.kidsplayground.quizmanager.QuizQuestionInfo;
+import com.flowz.kidsplayground.quizmanager.QuizQuestionsManager;
 import com.flowz.kidsplayground.quizmanager.ViewPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class QuizActivity extends FragmentActivity {
 
@@ -29,8 +31,9 @@ public class QuizActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        List<QuizQuestionInfo> quizQuestionInfos = QuizQuestionsManager.getInstance().getFewQuestions();
         mViewPager = findViewById(R.id.view_pager);
-        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), quizQuestionInfos));
 
 
     }
@@ -66,7 +69,39 @@ public class QuizActivity extends FragmentActivity {
         }
     }
 
-    public void onListClick(View view){
+    private int analyzeAnswer() {
+        ListView optionsList = findViewById(R.id.quiz_options);
+        List<ScoreModel> scores = new ArrayList<>();
 
+        QuizOptionsListAdapter quizOptionsListAdapter = ((QuizOptionsListAdapter) optionsList.getAdapter());
+
+        scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
+        return calculateAnswer(scores);
+
+//        if (scores.get(currentItem).equals(quizOptionsListAdapter.getQuestionId())) {
+//            scores.remove(currentItem);
+//            scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
+//        } else {
+//            scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
+//
+//        }
+
+    }
+
+    private int calculateAnswer(List<ScoreModel> scoreModels) {
+        int totalScore = 0;
+        for (ScoreModel scoreModel : scoreModels) {
+            totalScore = totalScore + scoreModel.getAnswer();
+        }
+        return totalScore;
+
+    }
+
+    public void submitButtonClicked(View view) {
+        int score = analyzeAnswer();
+        Intent intent = new Intent(this, DisplayScoreActivity.class);
+        intent.putExtra("score", score);
+        startActivity(intent);
+        this.overridePendingTransition(R.anim.activity_slide_from_bottom, R.anim.activity_stay);
     }
 }

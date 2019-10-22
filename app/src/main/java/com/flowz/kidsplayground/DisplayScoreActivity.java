@@ -31,6 +31,8 @@ public class DisplayScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_score);
 
+
+
         youScored = findViewById(R.id.you_scored);
         commendation = findViewById(R.id.commendations);
         dispalyedPic = findViewById(R.id.displayed_pic);

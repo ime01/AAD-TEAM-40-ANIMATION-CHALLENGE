@@ -16,7 +16,9 @@ public class QuizOptionsListAdapter extends BaseAdapter {
     private List<QuizOptionInfo> quizOptionArrayList;
     private Context mContext;
     private int mAnswerId;
+    public int answer;
     private boolean answered;
+    public int questionId;
     private int selectedPosition = -1;
     private RadioButton mSelectedOption;
 
@@ -25,6 +27,14 @@ public class QuizOptionsListAdapter extends BaseAdapter {
         mContext = context;
         mAnswerId = answerId;
 
+    }
+
+    public int getAnswer() {
+        return answer;
+    }
+
+    public int getQuestionId() {
+        return questionId;
     }
 
     @Override
@@ -78,18 +88,30 @@ public class QuizOptionsListAdapter extends BaseAdapter {
             option.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(position != selectedPosition && mSelectedOption !=null){
+                    if (position != selectedPosition && mSelectedOption != null) {
                         mSelectedOption.setChecked(false);
                     }
                     selectedPosition = position;
                     mSelectedOption = ((RadioButton) view);
+
+                    if (!answered) {
+                        if (position + 1 == mAnswerId) {
+                            answer = 1;
+                        } else {
+                            answer = 0;
+                        }
+                        answered = true;
+                    }
+
                 }
+
+
             });
-            if(selectedPosition != position){
+            if (selectedPosition != position) {
                 option.setChecked(false);
-            }else {
+            } else {
                 option.setChecked(true);
-                if(mSelectedOption !=null && option != mSelectedOption){
+                if (mSelectedOption != null && option != mSelectedOption) {
                     mSelectedOption = option;
                 }
             }
