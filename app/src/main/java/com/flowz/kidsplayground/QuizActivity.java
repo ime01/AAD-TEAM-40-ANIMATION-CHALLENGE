@@ -25,15 +25,17 @@ public class QuizActivity extends FragmentActivity {
 
     public ImageButton questionText;
     public Button submit;
+    private List<QuizQuestionInfo> mQuizQuestionInfos;
+    private List<ScoreModel> mScores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        List<QuizQuestionInfo> quizQuestionInfos = QuizQuestionsManager.getInstance().getFewQuestions();
+        mQuizQuestionInfos = QuizQuestionsManager.getInstance().getFewQuestions();
         mViewPager = findViewById(R.id.view_pager);
-        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), quizQuestionInfos));
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), mQuizQuestionInfos));
 
 
     }
@@ -67,16 +69,15 @@ public class QuizActivity extends FragmentActivity {
         if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getAdapter().getCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
         }
+        analyzeAnswer();
     }
 
-    private int analyzeAnswer() {
+    private void analyzeAnswer() {
         ListView optionsList = findViewById(R.id.quiz_options);
-        List<ScoreModel> scores = new ArrayList<>();
 
         QuizOptionsListAdapter quizOptionsListAdapter = ((QuizOptionsListAdapter) optionsList.getAdapter());
 
-        scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
-        return calculateAnswer(scores);
+        mScores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
 
 //        if (scores.get(currentItem).equals(quizOptionsListAdapter.getQuestionId())) {
 //            scores.remove(currentItem);
@@ -88,9 +89,9 @@ public class QuizActivity extends FragmentActivity {
 
     }
 
-    private int calculateAnswer(List<ScoreModel> scoreModels) {
+    private int calculateAnswer() {
         int totalScore = 0;
-        for (ScoreModel scoreModel : scoreModels) {
+        for (ScoreModel scoreModel : mScores) {
             totalScore = totalScore + scoreModel.getAnswer();
         }
         return totalScore;
@@ -98,9 +99,10 @@ public class QuizActivity extends FragmentActivity {
     }
 
     public void submitButtonClicked(View view) {
-        int score = analyzeAnswer();
+       int score = calculateAnswer();
         Intent intent = new Intent(this, DisplayScoreActivity.class);
         intent.putExtra("score", score);
+        intent.putExtra("totalScore", mQuizQuestionInfos.size());
         startActivity(intent);
         this.overridePendingTransition(R.anim.activity_slide_from_bottom, R.anim.activity_stay);
     }

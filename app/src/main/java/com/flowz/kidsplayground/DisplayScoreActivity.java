@@ -19,8 +19,9 @@ import java.util.List;
 
 public class DisplayScoreActivity extends AppCompatActivity {
 
-    int score = 10;
-    TextView youScored, commendation;
+    int score;
+    int totalScore;
+    TextView youScored, commendation, displayKidsScore;
     Button playAgain, exit;
     ImageView dispalyedPic;
     public Animation animPlay, animBounce, animBlink, animSlide, animSlide2, animSlideText, animSlideInText;
@@ -35,7 +36,9 @@ public class DisplayScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_score);
-
+        Intent intent = getIntent();
+        score = intent.getIntExtra("score", 0);
+        totalScore = intent.getIntExtra("totalScore", 10);
 
 
         youScored = findViewById(R.id.you_scored);
@@ -43,6 +46,8 @@ public class DisplayScoreActivity extends AppCompatActivity {
         dispalyedPic = findViewById(R.id.displayed_pic);
         playAgain = findViewById(R.id.play_again);
         exit = findViewById(R.id.exit);
+        displayKidsScore = findViewById(R.id.display_kids_score);
+        displayKidsScore.setText("You scored " + score+ " out of "+ totalScore+ " questions");
 
 
 
@@ -81,43 +86,51 @@ public class DisplayScoreActivity extends AppCompatActivity {
 
         });
 
+        analyseScore();
+    }
 
+    private int calculatePercentage(){
+      return (score*100) / totalScore;
 
-        if (score <= 10){
-            KidScoresBelowTen();
-        }else if (score <=15){
-            score_from_10_to_15();
+    }
+
+    private void analyseScore(){
+        int percentScore = calculatePercentage();
+        if (percentScore <= 30){
+            KidScoresBelow30Percent();
+        }else if (score <=50){
+            from_31_to_50Percent();
         }
-        else if (score <=20){
-            score_from_15_to_20();
+        else if (score <=70){
+            from_51_to_70Percent();
         }
         else {
-            score_from_20and_above();
+            from_70and_abovepercent();
         }
 
         QuizQuestionsManager questionsManager = new QuizQuestionsManager();
 
     }
 
-    private void KidScoresBelowTen() {
+    private void KidScoresBelow30Percent() {
         youScored.setText(R.string.score_below_10);
         commendation.setText(R.string.D);
         dispalyedPic.setImageResource(R.drawable.sadface);
 
     }
 
-    private void score_from_10_to_15() {
+    private void from_31_to_50Percent() {
         youScored.setText(R.string.score_from_10_to_15);
         commendation.setText(R.string.C);
         dispalyedPic.setImageResource(R.drawable.apple);
     }
 
-    private void score_from_15_to_20() {
+    private void from_51_to_70Percent() {
         youScored.setText(R.string.score_from_15_to_20);
         commendation.setText(R.string.B);
         dispalyedPic.setImageResource(R.drawable.excited);
     }
-    private void score_from_20and_above() {
+    private void from_70and_abovepercent() {
         youScored.setText(R.string.score_from_20and_above);
         commendation.setText(R.string.A);
         dispalyedPic.setImageResource(R.drawable.greatjob);
