@@ -17,6 +17,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.flowz.kidsplayground.DisplayScoreActivity;
+import com.flowz.kidsplayground.QuizActivity;
 import com.flowz.kidsplayground.R;
 
 import java.util.List;
@@ -107,6 +108,8 @@ public class QuizQuestionFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(requireContext(), DisplayScoreActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_slide_from_bottom, R.anim.activity_stay);
+
             }
         });
 
