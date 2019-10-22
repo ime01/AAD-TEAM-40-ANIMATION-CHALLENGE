@@ -2,6 +2,7 @@ package com.flowz.kidsplayground;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,20 +20,63 @@ public class DisplayScoreActivity extends AppCompatActivity {
     TextView youScored, commendation;
     Button playAgain, exit;
     ImageView dispalyedPic;
-    public Animation animPlay;
+    public Animation animPlay, animBounce, animBlink, animSlide, animSlide2, animSlideText, animSlideInText;
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_score);
 
-        youScored = (TextView)findViewById(R.id.you_scored);
-        commendation = (TextView)findViewById(R.id.commendations);
-        dispalyedPic = (ImageView)findViewById(R.id.displayed_pic);
-        playAgain = (Button)findViewById(R.id.play_again);
-        exit = (Button)findViewById(R.id.exit);
+        youScored = findViewById(R.id.you_scored);
+        commendation = findViewById(R.id.commendations);
+        dispalyedPic = findViewById(R.id.displayed_pic);
+        playAgain = findViewById(R.id.play_again);
+        exit = findViewById(R.id.exit);
+
+
 
         animPlay = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.play_animation);
+        animBlink = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.quiz_buttuon_animation);
+        animSlide = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_left);
+        animSlide2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
+        animBounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+        animSlideText = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right_text);
+        animSlideInText = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_text);
+
+        dispalyedPic.startAnimation(animBounce);
+        commendation.setAnimation(animBlink);
+        youScored.setAnimation(animSlideInText);
+        animBounce.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                playAgain.setVisibility(View.GONE);
+                exit.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                playAgain.setVisibility(View.VISIBLE);
+                exit.setVisibility(View.VISIBLE);
+                playAgain.startAnimation(animSlideText);
+                exit.setAnimation(animSlideText);
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+
+        });
+
+
 
         if (score <= 10){
             KidScoresBelowTen();
