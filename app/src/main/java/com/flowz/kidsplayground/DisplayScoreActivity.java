@@ -111,7 +111,7 @@ public class DisplayScoreActivity extends AppCompatActivity {
     }
     private void score_from_20and_above() {
        // youScored.setText(R.string.score_from_20and_above);
-     //   commendation.setText(R.string.A);
+     //git add   commendation.setText(R.string.A);
         dispalyedPic.setImageResource(R.drawable.greatjob);
     }
 
