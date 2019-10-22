@@ -12,7 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.flowz.kidsplayground.quizmanager.QuizQuestionInfo;
 import com.flowz.kidsplayground.quizmanager.QuizQuestionsManager;
+
+import java.util.List;
 
 public class DisplayScoreActivity extends AppCompatActivity {
 
