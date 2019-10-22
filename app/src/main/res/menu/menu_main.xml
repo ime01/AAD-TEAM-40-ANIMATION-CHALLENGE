@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.andela.alc4.phase1.finalproject.imageslider.MainActivity">
+    <item
+        android:id="@+id/action_next"
+        android:orderInCategory="100"
+        android:title="Next"
+        app:showAsAction="never" />
+</menu>
