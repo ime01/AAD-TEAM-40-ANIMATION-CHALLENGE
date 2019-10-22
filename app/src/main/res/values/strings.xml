@@ -31,4 +31,5 @@
     <string name="B">YOUR ARE ALMOST THERE</string>
     <string name="play_again">PLAY AGAIN</string>
     <string name="exit_app">EXIT APP</string>
+    <string name="submit">SUBMIT</string>
 </resources>

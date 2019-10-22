@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void playActivity(View view) {
         playBtn.startAnimation(animPlayBtn);
-        Intent intent = new Intent(MainActivity.this, DisplayScoreActivity.class);
+        Intent intent = new Intent(MainActivity.this, PlayActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 

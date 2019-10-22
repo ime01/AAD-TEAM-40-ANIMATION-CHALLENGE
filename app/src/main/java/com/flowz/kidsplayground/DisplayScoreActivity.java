@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class DisplayScoreActivity extends AppCompatActivity {
 
-    int score = 25;
+    int score = 10;
     TextView youScored, commendation;
     Button playAgain, exit;
     ImageView dispalyedPic;
@@ -76,12 +76,8 @@ public class DisplayScoreActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
     public void Exit(View view) {
-        onDestroy();
+      moveTaskToBack(true);
+      android.os.Process.killProcess(android.os.Process.myPid());
     }
 }
