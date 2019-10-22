@@ -1,8 +1,10 @@
 package com.flowz.kidsplayground;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +21,20 @@ public class MainActivity extends AppCompatActivity /*implements Animation.Anima
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        new AlertDialog.Builder(this)
+                .setMessage("Do you want to Exit Kids PlayGround")
+                .setCancelable(true)
+
+                .setPositiveButton(
+                        "Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                moveTaskToBack(true);
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                            }
+                        })
+                .setNegativeButton("No", null).show();
+
     }
 
     @Override
