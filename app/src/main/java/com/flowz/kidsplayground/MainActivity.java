@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity /*implements Animation.Anima
 
     public void playActivity(View view) {
         playBtn.startAnimation(animPlayBtn);
+
+
         animPlayBtn.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity /*implements Animation.Anima
 
             }
         });
+
 
 
 
