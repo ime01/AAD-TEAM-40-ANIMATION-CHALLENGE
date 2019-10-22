@@ -13,6 +13,7 @@ import com.flowz.kidsplayground.adapter.AlphabetRecyclerAdapter
 import com.flowz.kidsplayground.repository.DataManager
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter
 import jp.wasabeef.recyclerview.animators.FlipInBottomXAnimator
+import jp.wasabeef.recyclerview.animators.LandingAnimator
 import jp.wasabeef.recyclerview.animators.OvershootInRightAnimator
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.item_alphabet_list.*
@@ -40,11 +41,11 @@ class ListActivity : AppCompatActivity() {
         listItems.layoutManager = listLayoutManager
         listItems.adapter = ScaleInAnimationAdapter(alphabetRecyclerAdapter)
 
+        listItems.itemAnimator = OvershootInRightAnimator()
         listItems.itemAnimator=FlipInBottomXAnimator()
-      //  listItems.itemAnimator = OvershootInRightAnimator()
         listItems.itemAnimator?.apply {
-            addDuration = 1000   // duration of add operation
-            removeDuration = 500// duration of delete operation
+            addDuration = 500   // duration of add operation
+            removeDuration = 700// duration of delete operation
         }
 
     }

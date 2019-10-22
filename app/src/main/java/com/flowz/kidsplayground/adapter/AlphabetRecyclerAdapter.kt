@@ -20,6 +20,7 @@ import android.graphics.Color
 import android.view.animation.AnimationUtils
 import android.view.animation.Animation
 import android.animation.ValueAnimator
+import android.content.Intent
 
 
 class AlphabetRecyclerAdapter(private val context: Context, private val list: ArrayList<AlphabetData>) :
@@ -30,6 +31,9 @@ class AlphabetRecyclerAdapter(private val context: Context, private val list: Ar
     private val on_attach = true
     var lastPosition=-1
     private var rotateAnimator: ObjectAnimator? = null
+    private var scaleAnimator: ObjectAnimator? = null
+    private var translateAnimator: ObjectAnimator? = null
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val alphabetData:AlphabetData = list[position]
@@ -39,9 +43,7 @@ class AlphabetRecyclerAdapter(private val context: Context, private val list: Ar
         holder.bind(alphabetData)
         holder.layout?.setBackgroundColor(currentColor)
 
-        // holder.thumbnailPosition=position
        slideEffect(holder.layout!!,position)
-        setAnimation(holder.layout!!,position)
         setFlipAnimation(holder.layout!!,position)
     }
 
@@ -57,44 +59,28 @@ class AlphabetRecyclerAdapter(private val context: Context, private val list: Ar
 
     }
 
+
     fun setFlipAnimation(view: ViewGroup, i: Int){
         if (i > lastPosition) {
-            rotateAnimator = ObjectAnimator.ofFloat(view, "rotation", 0.0f, -180.0f)
-            rotateAnimator?.apply {
-                duration = 1000
-                repeatCount = 1
-                repeatMode = ValueAnimator.REVERSE
+           // scaleAnimator = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 3.0f)
+            translateAnimator = ObjectAnimator.ofFloat(view, "translationX", 0f, 300f,0f)
+            rotateAnimator = ObjectAnimator.ofFloat(view, "rotation", 0.0f, 360.0f)
+            AnimatorSet().apply {
+                play(rotateAnimator).before(translateAnimator)
+                duration = 500
                 start()
+
             }
             lastPosition =i
+
+            /*rotateAnimator?.apply {
+                duration = 500
+                repeatCount = 1
+                repeatMode = ValueAnimator.REVERSE
+               start()
+            }*/
         }
     }
-
-
-
-    private fun setAnimation(itemView: View, i: Int) {
-        var i = i
-        if (!on_attach) {
-            i = -1
-        }
-        val isNotFirstItem = i == -1
-        i++
-        itemView.alpha = 0f
-        val animatorSet = AnimatorSet()
-        val animator = ObjectAnimator.ofFloat(itemView, "alpha", 0f, 0.5f, 1.0f)
-        ObjectAnimator.ofFloat(itemView, "alpha", 0f).start()
-
-
-
-        animator.startDelay = if (isNotFirstItem) DURATION / 2 else i * DURATION / 3
-        animator.duration = 500
-        animatorSet.play(animator)
-        animator.start()
-    }
-
-
-
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -126,8 +112,9 @@ class AlphabetRecyclerAdapter(private val context: Context, private val list: Ar
             mletter?.text = alphabetData.letter
 
             itemView?.setOnClickListener {
-                setAnimation(itemView,position)
-
+           /*     val intent = Intent(context, DetailActivity::class.java)
+                intent.putExtra("KEY", pos)
+                context.startActivity(intent)*/
             }
         }
 
