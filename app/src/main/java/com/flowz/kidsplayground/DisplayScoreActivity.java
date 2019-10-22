@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.flowz.kidsplayground.quizmanager.QuizQuestionsManager;
+
 public class DisplayScoreActivity extends AppCompatActivity {
 
     int score = 10;
@@ -43,6 +45,9 @@ public class DisplayScoreActivity extends AppCompatActivity {
         else {
             score_from_20and_above();
         }
+
+        QuizQuestionsManager questionsManager = new QuizQuestionsManager();
+
     }
 
     private void KidScoresBelowTen() {
