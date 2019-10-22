@@ -20,6 +20,7 @@ import android.graphics.Color
 import android.view.animation.AnimationUtils
 import android.view.animation.Animation
 import android.animation.ValueAnimator
+import android.widget.ImageView
 
 
 class AlphabetRecyclerAdapter(private val context: Context, private val list: ArrayList<AlphabetData>) :
@@ -103,27 +104,27 @@ class AlphabetRecyclerAdapter(private val context: Context, private val list: Ar
     }
     override fun getItemCount() = list.size
 
-   /* override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-    *//*    val note = notes[position]
-        holder.textCourse?.text = note.course?.title
-        holder.textTitle?.text = note.title
-        holder.notePosition = position*//*
-    }*/
+    /*override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+         val note = notes[position]
+         holder.textCourse?.text = note.course?.title
+         holder.textTitle?.text = note.title
+         holder.notePosition = position
+     }*/
 
     inner class ViewHolder(inflater: LayoutInflater?, parent: ViewGroup) : RecyclerView.ViewHolder
     (inflater?.inflate(com.flowz.kidsplayground.R.layout.item_alphabet_list, parent, false)!!) {
-        private var mletter: TextView? = null
+        private var mImage: ImageView? = null
         var layout:ViewGroup?=null
         var pos=0
 
         init {
-            mletter = itemView.findViewById(com.flowz.kidsplayground.R.id.capitalLetter)
+            mImage = itemView.findViewById(com.flowz.kidsplayground.R.id.capitalLetter)
             layout=itemView.findViewById(com.flowz.kidsplayground.R.id.screenRoot)
 
         }
 
         fun bind(alphabetData: AlphabetData) {
-            mletter?.text = alphabetData.letter
+            mImage?.setImageResource(alphabetData.letter!!) //= alphabetData.image
 
             itemView?.setOnClickListener {
                 setAnimation(itemView,position)
