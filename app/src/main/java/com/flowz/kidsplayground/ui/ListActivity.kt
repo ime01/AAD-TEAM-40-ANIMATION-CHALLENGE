@@ -44,7 +44,7 @@ class ListActivity : AppCompatActivity() {
         listItems.itemAnimator = OvershootInRightAnimator()
         listItems.itemAnimator?.apply {
             addDuration = 500   // duration of add operation
-            removeDuration = 700// duration of delete operation
+            removeDuration = 500// duration of delete operation
         }
 
     }
