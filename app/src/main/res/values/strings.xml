@@ -20,6 +20,9 @@
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="options">options</string>
+
+    
+
     <string name="score_from_20and_above">HURRAY! YOU SCORED</string>
     <string name="score_below_10">NOT GOOD! YOU SCORED</string>
     <string name="score_from_10_to_15">GOOD! YOU SCORED</string>
