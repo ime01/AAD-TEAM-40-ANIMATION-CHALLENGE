@@ -45,6 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void playActivity(View view) {
         playBtn.startAnimation(animPlayBtn);
-        startActivity( new Intent(this, PlayActivity.class));
+        startActivity( new Intent(this, DetailActivity.class));
     }
 }
