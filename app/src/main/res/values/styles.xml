@@ -33,6 +33,20 @@
     </style>
 
 
+    <style name="congrats_on_score">
+        <item name="android:textStyle"> bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+
+    <style name="commendations">
+        <item name="android:textStyle"> bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+
     <style name="answersStyle4">
         <item name="android:textStyle"> bold</item>
         <item name="android:textColor">@color/colorAccent</item>

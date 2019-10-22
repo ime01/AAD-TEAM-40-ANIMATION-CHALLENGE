@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DetailActivity"></activity>
-        <activity android:name=".PlayActivity"></activity>
+        <activity android:name=".DisplayScoreActivity"></activity>
+        <activity android:name=".PlayActivity" />
         <activity android:name=".QuizActivity" />
         <activity
             android:name=".MainActivity"
