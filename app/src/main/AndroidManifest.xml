@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.flowz.kidsplayground">
 
-
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -13,6 +12,12 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.ListActivity">
+        <activity android:name=".DisplayScoreActivity"></activity>
+        <activity android:name=".PlayActivity" />
+        <activity android:name=".QuizActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.noActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
