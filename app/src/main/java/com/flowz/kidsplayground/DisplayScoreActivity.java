@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.flowz.kidsplayground.ui.MainActivity;
+
 public class DisplayScoreActivity extends AppCompatActivity {
 
     int score = 10;
@@ -90,26 +92,26 @@ public class DisplayScoreActivity extends AppCompatActivity {
     }
 
     private void KidScoresBelowTen() {
-        youScored.setText(R.string.score_below_10);
-        commendation.setText(R.string.D);
+       // youScored.setText(R.string.score_below_10);
+       // commendation.setText(R.string.D);
         dispalyedPic.setImageResource(R.drawable.sadface);
 
     }
 
     private void score_from_10_to_15() {
-        youScored.setText(R.string.score_from_10_to_15);
-        commendation.setText(R.string.C);
+      //  youScored.setText(R.string.score_from_10_to_15);
+       // commendation.setText(R.string.C);
         dispalyedPic.setImageResource(R.drawable.apple);
     }
 
     private void score_from_15_to_20() {
-        youScored.setText(R.string.score_from_15_to_20);
-        commendation.setText(R.string.B);
+        //youScored.setText(R.string.score_from_15_to_20);
+        //commendation.setText(R.string.B);
         dispalyedPic.setImageResource(R.drawable.excited);
     }
     private void score_from_20and_above() {
-        youScored.setText(R.string.score_from_20and_above);
-        commendation.setText(R.string.A);
+       // youScored.setText(R.string.score_from_20and_above);
+     //   commendation.setText(R.string.A);
         dispalyedPic.setImageResource(R.drawable.greatjob);
     }
 

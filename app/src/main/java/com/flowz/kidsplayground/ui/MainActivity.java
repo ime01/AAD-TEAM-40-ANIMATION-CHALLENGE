@@ -1,4 +1,4 @@
-package com.flowz.kidsplayground;
+package com.flowz.kidsplayground.ui;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.flowz.kidsplayground.PlayActivity;
+import com.flowz.kidsplayground.QuizActivity;
+import com.flowz.kidsplayground.R;
 
 public class MainActivity extends AppCompatActivity /*implements Animation.AnimationListener*/ {
     public Animation animSequential, animQuizBtn, animPlayBtn;
