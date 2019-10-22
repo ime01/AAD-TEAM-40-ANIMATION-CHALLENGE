@@ -42,7 +42,6 @@ class ListActivity : AppCompatActivity() {
         listItems.adapter = ScaleInAnimationAdapter(alphabetRecyclerAdapter)
 
         listItems.itemAnimator = OvershootInRightAnimator()
-        listItems.itemAnimator=FlipInBottomXAnimator()
         listItems.itemAnimator?.apply {
             addDuration = 500   // duration of add operation
             removeDuration = 700// duration of delete operation
@@ -50,11 +49,4 @@ class ListActivity : AppCompatActivity() {
 
     }
 
-    fun slideEffect(view: View, i:Int) {
-
-        val transition = Slide(Gravity.END)
-        TransitionManager.beginDelayedTransition(screenRoot, transition)
-
-
-    }
 }

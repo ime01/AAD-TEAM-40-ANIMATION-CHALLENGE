@@ -20,6 +20,7 @@ import android.graphics.Color
 import android.view.animation.AnimationUtils
 import android.view.animation.Animation
 import android.animation.ValueAnimator
+import android.widget.ImageView
 import android.content.Intent
 
 
@@ -43,30 +44,19 @@ class AlphabetRecyclerAdapter(private val context: Context, private val list: Ar
         holder.bind(alphabetData)
         holder.layout?.setBackgroundColor(currentColor)
 
-       slideEffect(holder.layout!!,position)
         setFlipAnimation(holder.layout!!,position)
     }
 
 
 
 
-
-    fun slideEffect(view: ViewGroup, i:Int) {
-
-        val transition = Slide(Gravity.END)
-        TransitionManager.beginDelayedTransition(view, transition)
-
-
-    }
-
-
     fun setFlipAnimation(view: ViewGroup, i: Int){
         if (i > lastPosition) {
-           // scaleAnimator = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 3.0f)
+           scaleAnimator = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 3.0f,1.0f)
             translateAnimator = ObjectAnimator.ofFloat(view, "translationX", 0f, 300f,0f)
             rotateAnimator = ObjectAnimator.ofFloat(view, "rotation", 0.0f, 360.0f)
             AnimatorSet().apply {
-                play(rotateAnimator).before(translateAnimator)
+                play(rotateAnimator).before(translateAnimator).with(scaleAnimator)
                 duration = 500
                 start()
 
@@ -98,18 +88,18 @@ class AlphabetRecyclerAdapter(private val context: Context, private val list: Ar
 
     inner class ViewHolder(inflater: LayoutInflater?, parent: ViewGroup) : RecyclerView.ViewHolder
     (inflater?.inflate(com.flowz.kidsplayground.R.layout.item_alphabet_list, parent, false)!!) {
-        private var mletter: TextView? = null
+        private var mImage: ImageView? = null
         var layout:ViewGroup?=null
         var pos=0
 
         init {
-            mletter = itemView.findViewById(com.flowz.kidsplayground.R.id.capitalLetter)
+            mImage = itemView.findViewById(com.flowz.kidsplayground.R.id.capitalLetter)
             layout=itemView.findViewById(com.flowz.kidsplayground.R.id.screenRoot)
 
         }
 
         fun bind(alphabetData: AlphabetData) {
-            mletter?.text = alphabetData.letter
+            mImage?.setImageResource(alphabetData.letter!!) //= alphabetData.image
 
             itemView?.setOnClickListener {
            /*     val intent = Intent(context, DetailActivity::class.java)
