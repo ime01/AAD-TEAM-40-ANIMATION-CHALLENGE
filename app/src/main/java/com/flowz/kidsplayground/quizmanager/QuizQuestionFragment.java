@@ -1,6 +1,7 @@
 package com.flowz.kidsplayground.quizmanager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.flowz.kidsplayground.DisplayScoreActivity;
+import com.flowz.kidsplayground.QuizActivity;
 import com.flowz.kidsplayground.R;
 
 import java.util.List;
@@ -36,6 +40,8 @@ public class QuizQuestionFragment extends Fragment {
     private QuizQuestionInfo mQuestion;
 
     private OnFragmentInteractionListener mListener;
+
+    Button submit;
 
     public Animation animPlay;
     public Animation animPlay2;
@@ -82,6 +88,7 @@ public class QuizQuestionFragment extends Fragment {
         ImageView quizImage = view.findViewById(R.id.quiz_image);
         ListView optionsView = view.findViewById(R.id.quiz_options);
         TextView questionTextView = view.findViewById(R.id.quiz_question);
+        submit = view.findViewById(R.id.submit);
 
         quizImage.setImageResource(mQuestion.getImageResource());
         questionTextView.setText(mQuestion.getQuestion());
@@ -95,6 +102,16 @@ public class QuizQuestionFragment extends Fragment {
         questionTextView.startAnimation(animPlay2);
 
         quizImage.startAnimation(animPlay);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(requireContext(), DisplayScoreActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_slide_from_bottom, R.anim.activity_stay);
+
+            }
+        });
 
         return view;
     }

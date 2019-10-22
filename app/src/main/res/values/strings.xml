@@ -20,4 +20,16 @@
     <string name="next">Next</string>
     <string name="prev">Previous</string>
     <string name="options">options</string>
+    <string name="score_from_20and_above">HURRAY! YOU SCORED</string>
+    <string name="score_below_10">NOT GOOD! YOU SCORED</string>
+    <string name="score_from_10_to_15">GOOD! YOU SCORED</string>
+    <string name="score_from_15_to_20">GREAT! YOU SCORED</string>
+
+    <string name="A">YOU ARE SUCH A SMART KID!</string>
+    <string name="C">WE KNOW YOU CAN DO BETTER</string>
+    <string name="D">NOT SO GREAT</string>
+    <string name="B">YOUR ARE ALMOST THERE</string>
+    <string name="play_again">PLAY AGAIN</string>
+    <string name="exit_app">EXIT APP</string>
+    <string name="submit">SUBMIT</string>
 </resources>
