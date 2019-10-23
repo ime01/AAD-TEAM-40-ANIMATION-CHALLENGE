@@ -1,6 +1,7 @@
 package com.flowz.kidsplayground;
 
 import android.content.Context;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class DetailPagerAdapter extends PagerAdapter {
 
@@ -58,9 +60,10 @@ public class DetailPagerAdapter extends PagerAdapter {
         textView.setText(texts[position]);
 
         container.addView(itemView);
-
         return itemView;
     }
+
+
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {

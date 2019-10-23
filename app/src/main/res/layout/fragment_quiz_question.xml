@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
 
-        <ImageView
+    <ImageView
             android:id="@+id/quiz_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -30,29 +30,30 @@
         android:textAlignment="center"
         android:textSize="24sp" />
 
-        <ListView
-            android:id="@+id/quiz_options"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1.5"
-            android:choiceMode="singleChoice"
-            android:clickable="true"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:dividerHeight="3dp"
-            android:elevation="@dimen/cardview_default_elevation"
-            android:focusable="true"
-            android:footerDividersEnabled="true"
-            android:theme="@style/Base.CardView" />
+    <ListView
+        android:id="@+id/quiz_options"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1.5"
+        android:choiceMode="singleChoice"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:dividerHeight="3dp"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:focusable="true"
+        android:footerDividersEnabled="true"
+        android:theme="@style/Base.CardView" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-
+        android:layout_weight="0"
+        android:gravity="right"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/submit"
@@ -61,11 +62,10 @@
             android:layout_marginStart="100dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/play_rounded_button"
+            android:onClick="submitButtonClicked"
             android:text="@string/submit"
             android:textColor="@color/colorAccent3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:visibility="visible" />
 
         <ImageButton
             android:id="@+id/quiz_next_button"
@@ -78,13 +78,8 @@
             android:text="@string/next"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/colorAccent3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.895"
-            app:layout_constraintStart_toEndOf="@+id/submit"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:visibility="visible" />
+    </LinearLayout>
 
 
 </LinearLayout>

@@ -11,18 +11,18 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private List<QuizQuestionInfo> quizQuestions;
     private int size;
 
-    public ViewPagerAdapter(FragmentManager fm) {
+    public ViewPagerAdapter(FragmentManager fm, List<QuizQuestionInfo> quizQuestionInfo) {
         super(fm);
-        quizQuestions = QuizQuestionsManager.getInstance().getQuestions();
+        this.quizQuestions = quizQuestionInfo;
         size = quizQuestions.size();
     }
 
     @Override
     public Fragment getItem(int position) {
-
+        Boolean lastQuestion = position + 1 == size;
         switch (position) {
             default:
-                return QuizQuestionFragment.newInstance(quizQuestions.get(position));
+                return QuizQuestionFragment.newInstance(quizQuestions.get(position), lastQuestion);
         }
 
     }

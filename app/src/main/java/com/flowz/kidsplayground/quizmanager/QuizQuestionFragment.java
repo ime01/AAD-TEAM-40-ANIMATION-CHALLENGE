@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,16 +33,14 @@ import java.util.List;
  */
 public class QuizQuestionFragment extends Fragment {
 
-    private static final String ARG_CURRENT_SCORE = "currentScore";
+    private static final String ARG_LAST_QUESTION = "lastQuestion";
 
-    private int mScore;
+    private boolean lastQuestion;
     private static final String ARG_QUESTION = "question";
 
     private QuizQuestionInfo mQuestion;
 
     private OnFragmentInteractionListener mListener;
-
-    Button submit;
 
     public Animation animPlay;
     public Animation animPlay2;
@@ -58,10 +57,11 @@ public class QuizQuestionFragment extends Fragment {
      * @return A new instance of fragment QuizQuestionFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static QuizQuestionFragment newInstance(QuizQuestionInfo question) {
+    public static QuizQuestionFragment newInstance(QuizQuestionInfo question, boolean lastQuestion) {
         QuizQuestionFragment fragment = new QuizQuestionFragment();
         Bundle args = new Bundle();
         args.putParcelable(ARG_QUESTION, question);
+        args.putBoolean(ARG_LAST_QUESTION, lastQuestion);
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,8 +71,7 @@ public class QuizQuestionFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mQuestion = getArguments().getParcelable(ARG_QUESTION);
-
-
+            lastQuestion = getArguments().getBoolean(ARG_LAST_QUESTION);
         }
 
 
@@ -88,7 +87,15 @@ public class QuizQuestionFragment extends Fragment {
         ImageView quizImage = view.findViewById(R.id.quiz_image);
         ListView optionsView = view.findViewById(R.id.quiz_options);
         TextView questionTextView = view.findViewById(R.id.quiz_question);
-        submit = view.findViewById(R.id.submit);
+        Button submit = view.findViewById(R.id.submit);
+        ImageButton next = view.findViewById(R.id.quiz_next_button);
+        if (!lastQuestion) {
+            submit.setVisibility(View.GONE);
+            next.setVisibility(View.VISIBLE);
+        } else {
+            submit.setVisibility(View.VISIBLE);
+            next.setVisibility(View.GONE);
+        }
 
         quizImage.setImageResource(mQuestion.getImageResource());
         questionTextView.setText(mQuestion.getQuestion());
@@ -103,15 +110,16 @@ public class QuizQuestionFragment extends Fragment {
 
         quizImage.startAnimation(animPlay);
 
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(requireContext(), DisplayScoreActivity.class);
-                startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.activity_slide_from_bottom, R.anim.activity_stay);
 
-            }
-        });
+//        submit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(requireContext(), DisplayScoreActivity.class);
+//                startActivity(intent);
+//                getActivity().overridePendingTransition(R.anim.activity_slide_from_bottom, R.anim.activity_stay);
+//
+//            }
+//        });
 
         return view;
     }

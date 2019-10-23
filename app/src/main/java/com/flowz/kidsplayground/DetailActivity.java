@@ -20,6 +20,7 @@ public class DetailActivity extends AppCompatActivity {
     int[] letters;
     int[] examples;
     String[] texts;
+    TextView isFor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class DetailActivity extends AppCompatActivity {
                 R.drawable.letter_t, R.drawable.letter_u, R.drawable.letter_v, R.drawable.letter_w,
                 R.drawable.letter_x, R.drawable.letter_y, R.drawable.letter_z};
 
-        examples = new int[] { R.drawable.apple, R.drawable.ball, R.drawable.cake,
+        examples = new int[] { R.drawable.apple, R.drawable.bicycle, R.drawable.cake,
                 R.drawable.duck, R.drawable.elephant, R.drawable.frog, R.drawable.grape, R.drawable.hen,
                 R.drawable.ice_cream, R.drawable.jacket, R.drawable.kangaroo, R.drawable.ladder,
                 R.drawable.monocycle, R.drawable.nurse, R.drawable.orange, R.drawable.parrot,
@@ -52,6 +53,8 @@ public class DetailActivity extends AppCompatActivity {
         // Bind the PagerAdapter to the ViewPager
         viewPager.setAdapter(adapter);
         setPageTransformer(new pagerTransformation());
+
+        isFor = findViewById(R.id.pager);
     }
 
     @Override
