@@ -29,10 +29,10 @@
     <string name="score_from_10_to_15">GOOD! YOU SCORED</string>
     <string name="score_from_15_to_20">GREAT! YOU SCORED</string>
 
-    <string name="A">YOU ARE SUCH A SMART KID!</string>
-    <string name="C">WE KNOW YOU CAN DO BETTER</string>
-    <string name="D">NOT SO GREAT</string>
-    <string name="B">YOUR ARE ALMOST THERE</string>
+    <string name="A"> you are such a smart kid!</string>
+    <string name="C"> we know you can do better!</string>
+    <string name="D"> very low try again</string>
+    <string name="B"> you are almost there!</string>
     <string name="play_again">PLAY AGAIN</string>
     <string name="exit_app">EXIT APP</string>
     <string name="submit">SUBMIT</string>

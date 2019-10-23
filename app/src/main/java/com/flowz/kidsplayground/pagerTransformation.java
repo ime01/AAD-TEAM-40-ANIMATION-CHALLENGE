@@ -7,6 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 
 public class pagerTransformation implements ViewPager.PageTransformer {
 
+
     @Override
     public void transformPage(@NonNull View page, float position) {
         page.setTranslationY(-position * page.getWidth());

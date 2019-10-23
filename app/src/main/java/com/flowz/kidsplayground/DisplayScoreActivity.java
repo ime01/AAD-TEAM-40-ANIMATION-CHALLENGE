@@ -1,10 +1,14 @@
 package com.flowz.kidsplayground;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -16,9 +20,11 @@ import com.flowz.kidsplayground.quizmanager.QuizQuestionInfo;
 import com.flowz.kidsplayground.quizmanager.QuizQuestionsManager;
 
 import java.util.List;
+import java.util.Locale;
 
 public class DisplayScoreActivity extends AppCompatActivity {
-
+    TextToSpeech mytextToSpeech;
+    final String TAG = "DisplayScoreActivity";
     int score;
     int totalScore;
     TextView youScored, commendation, displayKidsScore;
@@ -39,6 +45,22 @@ public class DisplayScoreActivity extends AppCompatActivity {
         Intent intent = getIntent();
         score = intent.getIntExtra("score", 0);
         totalScore = intent.getIntExtra("totalScore", 10);
+
+
+
+        mytextToSpeech = new TextToSpeech(DisplayScoreActivity.this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+//                if(status == TextToSpeech.SUCCESS)
+                mytextToSpeech.setLanguage(Locale.ENGLISH);
+                String commendStudent = commendation.getText().toString();
+                Log.d(TAG, "speakText: Text: " + commendStudent);
+//                mytextToSpeech.setPitch(2f);
+                mytextToSpeech.setSpeechRate(0.7f);
+                mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, null, null);
+            }
+        });
+
 
 
         youScored = findViewById(R.id.you_scored);
@@ -87,6 +109,21 @@ public class DisplayScoreActivity extends AppCompatActivity {
         });
 
         analyseScore();
+
+
+
+
+//        String commendStudent = commendation.getText().toString();
+//        mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    @Override
+    protected void onPause() {
+        if(mytextToSpeech != null){
+            mytextToSpeech.stop();
+            mytextToSpeech.shutdown();
+        }
+        super.onPause();
     }
 
     private int calculatePercentage(){
@@ -107,9 +144,6 @@ public class DisplayScoreActivity extends AppCompatActivity {
         else {
             from_70and_abovepercent();
         }
-
-        QuizQuestionsManager questionsManager = new QuizQuestionsManager();
-
     }
 
     private void KidScoresBelow30Percent() {
@@ -122,13 +156,13 @@ public class DisplayScoreActivity extends AppCompatActivity {
     private void from_31_to_50Percent() {
         youScored.setText(R.string.score_from_10_to_15);
         commendation.setText(R.string.C);
-        dispalyedPic.setImageResource(R.drawable.apple);
+        dispalyedPic.setImageResource(R.drawable.excited);
     }
 
     private void from_51_to_70Percent() {
         youScored.setText(R.string.score_from_15_to_20);
         commendation.setText(R.string.B);
-        dispalyedPic.setImageResource(R.drawable.excited);
+        dispalyedPic.setImageResource(R.drawable.happyface);
     }
     private void from_70and_abovepercent() {
         youScored.setText(R.string.score_from_20and_above);
@@ -144,7 +178,18 @@ public class DisplayScoreActivity extends AppCompatActivity {
     }
 
     public void Exit(View view) {
-      moveTaskToBack(true);
-      android.os.Process.killProcess(android.os.Process.myPid());
+        new AlertDialog.Builder(this)
+                .setMessage("Do you want to Exit Kids PlayGround")
+                .setCancelable(true)
+
+                .setPositiveButton(
+                        "Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                moveTaskToBack(true);
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                            }
+                        })
+                .setNegativeButton("No", null).show();
     }
 }
