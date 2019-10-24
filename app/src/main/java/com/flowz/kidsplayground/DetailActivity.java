@@ -20,8 +20,6 @@ public class DetailActivity extends AppCompatActivity {
     int[] letters;
     int[] examples;
     String[] texts;
-    TextView isFor;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +51,6 @@ public class DetailActivity extends AppCompatActivity {
         // Bind the PagerAdapter to the ViewPager
         viewPager.setAdapter(adapter);
         setPageTransformer(new pagerTransformation());
-
-        isFor = findViewById(R.id.pager);
     }
 
     @Override
