@@ -20,12 +20,13 @@ public class DetailActivity extends AppCompatActivity {
     int[] letters;
     int[] examples;
     String[] texts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        letters = new int[] { R.drawable.letter_a, R.drawable.letter_b, R.drawable.letter_c,
+        letters = new int[]{R.drawable.letter_a, R.drawable.letter_b, R.drawable.letter_c,
                 R.drawable.letter_d, R.drawable.letter_e, R.drawable.letter_f, R.drawable.letter_g,
                 R.drawable.letter_h, R.drawable.letter_i, R.drawable.letter_j, R.drawable.letter_k,
                 R.drawable.letter_l, R.drawable.letter_m, R.drawable.letter_n, R.drawable.letter_o,
@@ -33,7 +34,7 @@ public class DetailActivity extends AppCompatActivity {
                 R.drawable.letter_t, R.drawable.letter_u, R.drawable.letter_v, R.drawable.letter_w,
                 R.drawable.letter_x, R.drawable.letter_y, R.drawable.letter_z};
 
-        examples = new int[] { R.drawable.apple, R.drawable.bicycle, R.drawable.cake,
+        examples = new int[]{R.drawable.apple, R.drawable.bicycle, R.drawable.cake,
                 R.drawable.duck, R.drawable.elephant, R.drawable.frog, R.drawable.grape, R.drawable.hen,
                 R.drawable.ice_cream, R.drawable.jacket, R.drawable.kangaroo, R.drawable.ladder,
                 R.drawable.monocycle, R.drawable.nurse, R.drawable.orange, R.drawable.parrot,
@@ -41,9 +42,9 @@ public class DetailActivity extends AppCompatActivity {
                 R.drawable.umbrella, R.drawable.vase, R.drawable.well, R.drawable.xylophone,
                 R.drawable.yam, R.drawable.zebra};
 
-        texts = new String[] {"Apple", "Ball", "Cake", "Duck", "Elephant", "Frog", "Grape", "Hen", "Ice Cream",
-        "Jacket", "Kangaroo", "Ladder", "Monocycle", "Nurse", "Orange", "Parrot", "Quail", "Rainbow",
-        "Socks", "Tent", "Umbrella", "Vase", "Well", "Xylophone", "Yam", "Zebra"};
+        texts = new String[]{"Apple", "Ball", "Cake", "Duck", "Elephant", "Frog", "Grape", "Hen", "Ice Cream",
+                "Jacket", "Kangaroo", "Ladder", "Monocycle", "Nurse", "Orange", "Parrot", "Quail", "Rainbow",
+                "Socks", "Tent", "Umbrella", "Vase", "Well", "Xylophone", "Yam", "Zebra"};
 
         viewPager = findViewById(R.id.pager);
         // Initialize our PagerAdapter
@@ -75,7 +76,7 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setPageTransformer(ViewPager.PageTransformer transformer){
+    private void setPageTransformer(ViewPager.PageTransformer transformer) {
         viewPager.setPageTransformer(true, transformer);
     }
 }

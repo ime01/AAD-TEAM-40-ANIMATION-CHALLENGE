@@ -21,7 +21,6 @@ import java.util.List;
 public class QuizActivity extends FragmentActivity {
 
     private ViewPager mViewPager;
-    private int totalScore = 0;
 
     public ImageButton questionText;
     public Button submit;
@@ -79,13 +78,6 @@ public class QuizActivity extends FragmentActivity {
 
         mScores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
 
-//        if (scores.get(currentItem).equals(quizOptionsListAdapter.getQuestionId())) {
-//            scores.remove(currentItem);
-//            scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
-//        } else {
-//            scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
-//
-//        }
 
     }
 
@@ -93,6 +85,7 @@ public class QuizActivity extends FragmentActivity {
         int totalScore = 0;
         for (ScoreModel scoreModel : mScores) {
             totalScore = totalScore + scoreModel.getAnswer();
+
         }
         return totalScore;
 

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.flowz.kidsplayground.quizmanager.QuizQuestionInfo;
 import com.flowz.kidsplayground.quizmanager.QuizQuestionsManager;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -31,6 +32,9 @@ public class DisplayScoreActivity extends AppCompatActivity {
     Button playAgain, exit;
     ImageView dispalyedPic;
     public Animation animPlay, animBounce, animBlink, animSlide, animSlide2, animSlideText, animSlideInText;
+    HashMap<String, String> onlineSpeech = new HashMap<>();
+
+
 
     @Override
     public void onBackPressed() {
@@ -47,20 +51,20 @@ public class DisplayScoreActivity extends AppCompatActivity {
         totalScore = intent.getIntExtra("totalScore", 10);
 
 
-
         mytextToSpeech = new TextToSpeech(DisplayScoreActivity.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
 //                if(status == TextToSpeech.SUCCESS)
-                mytextToSpeech.setLanguage(Locale.ENGLISH);
+                mytextToSpeech.setLanguage(Locale.UK);
+
                 String commendStudent = commendation.getText().toString();
                 Log.d(TAG, "speakText: Text: " + commendStudent);
 //                mytextToSpeech.setPitch(2f);
                 mytextToSpeech.setSpeechRate(0.7f);
-                mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, null, null);
+                onlineSpeech.put(TextToSpeech.Engine.KEY_FEATURE_NETWORK_SYNTHESIS, "true");
+                mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, onlineSpeech);
             }
         });
-
 
 
         youScored = findViewById(R.id.you_scored);
@@ -69,8 +73,7 @@ public class DisplayScoreActivity extends AppCompatActivity {
         playAgain = findViewById(R.id.play_again);
         exit = findViewById(R.id.exit);
         displayKidsScore = findViewById(R.id.display_kids_score);
-        displayKidsScore.setText("You scored " + score+ " out of "+ totalScore+ " questions");
-
+        displayKidsScore.setText("You scored " + score + " out of " + totalScore + " questions");
 
 
         animPlay = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.play_animation);
@@ -111,37 +114,33 @@ public class DisplayScoreActivity extends AppCompatActivity {
         analyseScore();
 
 
-
-
 //        String commendStudent = commendation.getText().toString();
 //        mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     @Override
     protected void onPause() {
-        if(mytextToSpeech != null){
+        if (mytextToSpeech != null) {
             mytextToSpeech.stop();
             mytextToSpeech.shutdown();
         }
         super.onPause();
     }
 
-    private int calculatePercentage(){
-      return (score*100) / totalScore;
+    private int calculatePercentage() {
+        return (score * 100) / totalScore;
 
     }
 
-    private void analyseScore(){
+    private void analyseScore() {
         int percentScore = calculatePercentage();
-        if (percentScore <= 30){
+        if (percentScore <= 30) {
             KidScoresBelow30Percent();
-        }else if (score <=50){
+        } else if (score <= 50) {
             from_31_to_50Percent();
-        }
-        else if (score <=70){
+        } else if (score <= 70) {
             from_51_to_70Percent();
-        }
-        else {
+        } else {
             from_70and_abovepercent();
         }
     }
@@ -164,6 +163,7 @@ public class DisplayScoreActivity extends AppCompatActivity {
         commendation.setText(R.string.B);
         dispalyedPic.setImageResource(R.drawable.happyface);
     }
+
     private void from_70and_abovepercent() {
         youScored.setText(R.string.score_from_20and_above);
         commendation.setText(R.string.A);
