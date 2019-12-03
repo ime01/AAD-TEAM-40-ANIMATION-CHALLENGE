@@ -44,7 +44,7 @@ public class DisplayScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_score);
         Intent intent = getIntent();
         score = intent.getIntExtra("score", 0);
-        totalScore = intent.getIntExtra("totalScore", 10);
+        totalScore = intent.getIntExtra("totalScore", 0);
 
 
 
@@ -135,10 +135,10 @@ public class DisplayScoreActivity extends AppCompatActivity {
         int percentScore = calculatePercentage();
         if (percentScore <= 30){
             KidScoresBelow30Percent();
-        }else if (score <=50){
+        }else if (percentScore <=50){
             from_31_to_50Percent();
         }
-        else if (score <=70){
+        else if (percentScore <=70){
             from_51_to_70Percent();
         }
         else {

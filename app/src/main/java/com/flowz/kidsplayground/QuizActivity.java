@@ -16,6 +16,7 @@ import com.flowz.kidsplayground.quizmanager.QuizQuestionsManager;
 import com.flowz.kidsplayground.quizmanager.ViewPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class QuizActivity extends FragmentActivity {
@@ -99,6 +100,7 @@ public class QuizActivity extends FragmentActivity {
     }
 
     public void submitButtonClicked(View view) {
+        analyzeAnswer();
        int score = calculateAnswer();
         Intent intent = new Intent(this, DisplayScoreActivity.class);
         intent.putExtra("score", score);
