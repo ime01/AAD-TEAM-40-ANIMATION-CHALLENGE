@@ -41,7 +41,7 @@ public class DetailActivity extends AppCompatActivity {
                 R.drawable.umbrella, R.drawable.vase, R.drawable.well, R.drawable.xylophone,
                 R.drawable.yam, R.drawable.zebra};
 
-        texts = new String[] {"Apple", "Ball", "Cake", "Duck", "Elephant", "Frog", "Grape", "Hen", "Ice Cream",
+        texts = new String[] {"Apple", "Bicycle", "Cake", "Duck", "Elephant", "Frog", "Grape", "Hen", "Ice Cream",
         "Jacket", "Kangaroo", "Ladder", "Monocycle", "Nurse", "Orange", "Parrot", "Quail", "Rainbow",
         "Socks", "Tent", "Umbrella", "Vase", "Well", "Xylophone", "Yam", "Zebra"};
 

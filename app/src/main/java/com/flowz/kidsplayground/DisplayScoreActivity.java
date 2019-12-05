@@ -47,7 +47,6 @@ public class DisplayScoreActivity extends AppCompatActivity {
         totalScore = intent.getIntExtra("totalScore", 10);
 
 
-
         mytextToSpeech = new TextToSpeech(DisplayScoreActivity.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int i) {
@@ -60,7 +59,6 @@ public class DisplayScoreActivity extends AppCompatActivity {
                 mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         });
-
 
 
         youScored = findViewById(R.id.you_scored);
@@ -109,10 +107,6 @@ public class DisplayScoreActivity extends AppCompatActivity {
         });
 
         analyseScore();
-
-
-
-
 //        String commendStudent = commendation.getText().toString();
 //        mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, null);
     }

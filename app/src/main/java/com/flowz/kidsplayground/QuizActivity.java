@@ -37,7 +37,6 @@ public class QuizActivity extends FragmentActivity {
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), mQuizQuestionInfos));
 
-
     }
 
     @Override
@@ -45,7 +44,6 @@ public class QuizActivity extends FragmentActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
-
     @Override
     public void onBackPressed() {
         if (mViewPager.getCurrentItem() > 0) {
@@ -54,17 +52,12 @@ public class QuizActivity extends FragmentActivity {
         if (mViewPager.getCurrentItem() == 0) {
             super.onBackPressed();
         }
-
-
     }
-
-
     public void onPreviousPressed(View view) {
         if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getAdapter().getCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
     }
-
     public void onNextPressed(View view) {
         if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getAdapter().getCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
