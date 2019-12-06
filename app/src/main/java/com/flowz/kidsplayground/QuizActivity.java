@@ -80,13 +80,6 @@ public class QuizActivity extends FragmentActivity {
 
         mScores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
 
-//        if (scores.get(currentItem).equals(quizOptionsListAdapter.getQuestionId())) {
-//            scores.remove(currentItem);
-//            scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
-//        } else {
-//            scores.add(new ScoreModel(quizOptionsListAdapter.getQuestionId(), quizOptionsListAdapter.getAnswer()));
-//
-//        }
 
     }
 
