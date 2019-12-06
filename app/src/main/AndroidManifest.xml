@@ -9,15 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_kids_playground_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailActivity"></activity>
-        <activity android:name=".DisplayScoreActivity"></activity>
+        <activity android:name=".DetailActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".DisplayScoreActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name=".PlayActivity" />
         <activity android:name=".QuizActivity" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.noActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

@@ -91,7 +91,7 @@ public class QuizQuestionsManager {
     }
 
     private QuizQuestionInfo initializeQuestion8() {
-        return createQuestions("Match this picture to the corresponding alphabet", R.drawable.hen, "H", "Z", "J", "C", 1);
+        return createQuestions("Match this picture to the corresponding alphabet", R.drawable.hen, "H", "Z", "J", "T", 1);
     }
 
     private QuizQuestionInfo initializeQuestion9() {
