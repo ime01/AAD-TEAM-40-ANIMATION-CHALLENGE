@@ -85,7 +85,8 @@ public class QuizActivity extends FragmentActivity {
     }
 
     public void submitButtonClicked(View view) {
-       int score = calculateAnswer();
+
+        int score = calculateAnswer();
         Intent intent = new Intent(this, DisplayScoreActivity.class);
         intent.putExtra("score", score);
         intent.putExtra("totalScore", mQuizQuestionInfos.size());
