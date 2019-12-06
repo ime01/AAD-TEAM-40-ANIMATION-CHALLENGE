@@ -52,11 +52,11 @@ public class DisplayScoreActivity extends AppCompatActivity {
             @Override
             public void onInit(int i) {
 //                if(status == TextToSpeech.SUCCESS)
-                mytextToSpeech.setLanguage(Locale.ENGLISH);
+                mytextToSpeech.setLanguage(Locale.US);
                 String commendStudent = commendation.getText().toString();
                 Log.d(TAG, "speakText: Text: " + commendStudent);
 //                mytextToSpeech.setPitch(2f);
-                mytextToSpeech.setSpeechRate(0.7f);
+                mytextToSpeech.setSpeechRate(0.8f);
                 mytextToSpeech.speak(commendStudent, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         });
