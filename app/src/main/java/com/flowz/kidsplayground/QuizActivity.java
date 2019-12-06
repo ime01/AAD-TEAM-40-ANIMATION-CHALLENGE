@@ -16,11 +16,13 @@ import com.flowz.kidsplayground.quizmanager.QuizQuestionsManager;
 import com.flowz.kidsplayground.quizmanager.ViewPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class QuizActivity extends FragmentActivity {
 
     private ViewPager mViewPager;
+    private int totalScore = 0;
 
     public ImageButton questionText;
     public Button submit;
@@ -36,6 +38,7 @@ public class QuizActivity extends FragmentActivity {
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), mQuizQuestionInfos));
 
+
     }
 
     @Override
@@ -43,6 +46,7 @@ public class QuizActivity extends FragmentActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
+
     @Override
     public void onBackPressed() {
         if (mViewPager.getCurrentItem() > 0) {
@@ -51,12 +55,17 @@ public class QuizActivity extends FragmentActivity {
         if (mViewPager.getCurrentItem() == 0) {
             super.onBackPressed();
         }
+
+
     }
+
+
     public void onPreviousPressed(View view) {
         if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getAdapter().getCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() - 1);
         }
     }
+
     public void onNextPressed(View view) {
         if ((mViewPager.getCurrentItem() + 1) <= (mViewPager.getAdapter().getCount())) {
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() + 1);
@@ -78,15 +87,14 @@ public class QuizActivity extends FragmentActivity {
         int totalScore = 0;
         for (ScoreModel scoreModel : mScores) {
             totalScore = totalScore + scoreModel.getAnswer();
-
         }
         return totalScore;
 
     }
 
     public void submitButtonClicked(View view) {
-
-        int score = calculateAnswer();
+        analyzeAnswer();
+       int score = calculateAnswer();
         Intent intent = new Intent(this, DisplayScoreActivity.class);
         intent.putExtra("score", score);
         intent.putExtra("totalScore", mQuizQuestionInfos.size());
